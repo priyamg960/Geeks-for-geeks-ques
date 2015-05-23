@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int info;
+	struct node *link;
+};
+int main()
+{
+	int i,n,k;
+	struct node *start,*ptr,*tptr;
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		ptr=(struct node*)malloc(sizeof(struct node));
+		scanf("%d",&ptr->info);
+		if(i)
+			tptr->link=ptr;
+		else
+			start=ptr;
+		tptr=ptr;
+	}
+	ptr->link=NULL;
+	ptr=start;
+	scanf("%d",&k);
+	while(k--)
+	{
+		tptr->link=ptr;
+		start=start->link;
+		ptr->link=NULL;
+		ptr=start;
+		tptr=tptr->link;
+		tptr->link=NULL;
+	}
+	while(ptr)
+	{
+		printf("%d ",ptr->info);
+		ptr=ptr->link;
+	}
+	return 0;
+}
